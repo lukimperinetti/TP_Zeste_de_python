@@ -36,7 +36,7 @@ print(cadre2 + '\n' + action_p_1 + "\n" + res_punch_p_1 + "\n" + cadre2 + '\n\n'
 # -------- Round 1 Player 2 attack --------#
 
 print('Quelle attaque voulez-vous utiliser ? \n')
-punch_p_1 = input('1. Charge (-20 PV)\n2. Tonnerre (-50 PV)')
+punch_p_2 = input('1. Charge (-20 PV)\n2. Tonnerre (-50 PV)')
 
 punch_power = 0
 
