@@ -1,21 +1,70 @@
+# -------- Initialize the data --------#
+monsters = {
+    'pythachu': {
+        'name' : 'Pythachu',
+        'attacks' : ['tonnerre', 'charge'],
+    },
+    'pythard': {
+        'name' : 'Pytard',
+        'attacks' : ['jet-de-flotte', 'charge'],
+    },
+    'ponytha': {
+        'name' : 'Ponytha',
+        'attacks' : ['brûlure', 'charge'],
+    },
+}
+
+attacks = {
+    'charge' : {'damages' : 20},
+    'tonerre' : {'damages' : 50},
+    'charge' : {'damages' : 40},
+    'charge' : {'damages' : 40},
+}
+
+# create a list to store the players
+players = []
+
 # -------- Initialize the game --------#
 def saisie_nom_et_pv(player_name):
     while True:
         nom = input(f'Entrez le nom du {player_name} joueur : ').capitalize()
         pv = input('Et son nombre de PV : ')
         if pv.isdigit() and int(pv) > 0:
-            return nom, int(pv)
+            print('Monstres disponibles : ')
+            for monster in monsters.values():
+                print('- ', monster['name'])
+            monster_name = input('Choisissez votre monstre : ').lower()
+            if monster_name not in monsters.keys():
+                print('Monstre invalide')            
+            
+            return nom, int(pv), monster_name
         else:
             print('Nombre de PV invalide (doit être un nombre positif)')
-# Saisie des informations pour le joueur 1
-player_1, pv_1 = saisie_nom_et_pv("1er")
-# Saisie des informations pour le joueur 2
-player_2, pv_2 = saisie_nom_et_pv("2ème")
+        
+        
+
+
+player_1, pv_1, monster_1 = saisie_nom_et_pv("1er")
+dict_p_1 = {'name': player_1, 'pv': pv_1, 'monster': monster_1}
+player_2, pv_2, monster_2 = saisie_nom_et_pv("2ème")
+dict_p_2 = {'name': player_2, 'pv': pv_2, 'monster': monster_2}
+
+players.append(dict_p_1)
+players.append(dict_p_2)
+
+print(players)
+
 init = f"+ {player_1} ({pv_1}) affronte {player_2} ({pv_2}) +"
 def afficher_cadre(texte):
     cadre = "+" * len(texte)
     print(f"{cadre}\n{texte}\n{cadre}\n\n")
 afficher_cadre(init)
+
+
+# -------- Choose your monster --------#
+
+
+
 
 # -------- Round 1 Player 1 attack --------#
 
